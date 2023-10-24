@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <!-- two number input boxes -->
+    <input type="number" id="first" placeholder="enter 1st Number">
+    <input type="number" id="second" placeholder="enter 2nd Number">
+<br><br>
+    <!-- 4 functional buttons for calculations -->
+    &nbsp;
+    &nbsp;
+    <button onclick="add()">Add &nbsp;</button>
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    <button onclick="Subtract()">Subtract</button>
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    <button onclick="multiply()">Multiply</button>
+    &nbsp;
+    &nbsp;
+    <button onclick="division()">Divide</button>
+
+</body>
+<script>
+    let inpt1 = document.getElementById("first");
+    let inpt2 = document.getElementById("second");
+// Addition
+function add()
+{
+let addition = +inpt1.value + +inpt2.value;
+alert(addition)
+}
+
+// Subtraction
+function Subtract()
+{
+    let minus = +inpt1.value - +inpt2.value;
+    alert(minus)
+}
+
+// Multiply
+function multiply()
+{
+    let multiply = +inpt1.value * +inpt2.value;
+    alert(multiply)
+}
+
+function division()
+{
+    let divide = +inpt1.value / +inpt2.value;
+    alert(divide)
+}
+
+
+
+</script>
+</html>
