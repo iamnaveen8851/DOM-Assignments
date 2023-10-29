@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        #displayScore{
+            border: 2px solid black;
+            width: 30%;
+            height : 80px;
+            margin: auto;
+            text-align: center;
+            font-size: 45px;
+            font-weight: 600;
+            padding-top: 3%;
+        }
+
+
+        .keypads{
+            /* border: 1px solid red; */
+            width: 25%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            margin:auto;
+            gap: 24px
+        }
+
+        .keypads>button{
+            height: 72px;
+            font-size : 25px;
+            font-weight: 550;
+        }
+
+        #enterbtn{
+            /* border: 2px solid red; */
+            width: 24%;
+            margin: auto; 
+        }
+
+        #enterbtn > button{
+            width: 100%;
+            height: 90px;
+            font-size: 27px;
+            font-weight: 550;
+            color: white;
+            background-color: black;
+        }
+
+        #enterbtn > button:hover{
+            background-color: red;
+        }
+
+         
+            
+
+        
+/* container to contain min and max container inside itself */
+        .minMax{
+            /* border: 1px solid purple; */
+            width : 40%;
+            height: 110px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .min{
+            border: 3px solid black;
+            background-color: red;
+            width: 25%;
+            text-align: center;
+            font-size: 42px;
+            font-weight: 550;
+            color: white;
+            padding-top: 6%;
+        
+        
+        }
+
+        .max{
+            border: 3px solid black;
+            background-color: green;
+            width: 25%;
+            text-align: center;
+            font-size: 42px;
+            font-weight: 550;
+            color: white;
+            padding-top: 6%;
+            
+        }
+
+    /* heading of min and max */
+        .cont{
+            /* border: 1px solid teal; */
+            width : 35%;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            font-size: 25px;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- box of min and max -->
+    <div class="minMax">
+        <div class="min">43</div>
+        <div class="max">2019</div>
+    </div>
+
+    <!-- text of min and max -->
+<div class="cont">
+   <h2>Min</h2>
+    <h2>Max</h2>
+</div>
+    
+
+    <!-- score display -->
+    <div id="displayScore"></div>
+    <br>
+    <div class="keypads">
+        <button class="green">1</button>
+        <button class="orange">2</button>
+        <button class="green">3</button>
+        <button class="orange">4</button>
+        <button class="orange">5</button>
+        <button class="orange">6</button>
+        <button class="green">7</button>
+        <button class="orange">8</button>
+        <button class="green">9</button>
+        <br>
+        <button id="purple">0</button>
+        <button>Clear</button>
+    </div>
+    <br><br>
+    <div id="enterbtn">
+        <button> ENTER</button>
+    </div>
+</body>
+</html>
+<script>
+
+ // display
+    let display = document.getElementById("displayScore")
+// min and max 
+    let min = document.querySelector(".minMax > .min")
+    let max = document.querySelector(".minMax > .max")
+// keypads
+let numBtn = document.querySelectorAll(".keypads > button")
+let enter = document.getElementById("enterbtn")
+
+// to color those button which has class green
+let greenbtn = document.querySelectorAll(".keypads > .green")
+for(let i = 0; i < greenbtn.length; i++)
+{
+    greenbtn[i].style.backgroundColor = "#65802b"
+    greenbtn[i].addEventListener("mouseover", function(){
+        greenbtn[i].style.backgroundColor = "red";
+    })
+
+    greenbtn[i].addEventListener("mouseout", function(){
+        greenbtn[i].style.backgroundColor = "#65802b"
+    })
+
+
+}
+
+
+// to color those button which has class orange
+let orangeBtn = document.querySelectorAll(".keypads > .orange")
+for(let i = 0; i < orangeBtn.length; i++)
+{
+    orangeBtn[i].style.backgroundColor = "#f5811b"
+    orangeBtn[i].addEventListener("mouseover", function(){
+        orangeBtn[i].style.backgroundColor = "purple"
+    })
+
+    orangeBtn[i].addEventListener("mouseout", function(){
+        orangeBtn[i].style.backgroundColor = "#f5811b"
+    })
+}
+
+// button 0 is in purple color
+let purple = document.getElementById("purple")
+purple.style.backgroundColor = "purple"
+purple.addEventListener("mouseover", function(){
+    purple.style.backgroundColor = "orange"
+})
+purple.addEventListener("mouseout", function(){
+    purple.style.backgroundColor = "purple"
+})
+
+
+
+// adding score on display and add it into in the above min & max display
+for(let i = 0; i < numBtn.length; i++)
+{
+    if(numBtn[i].innerText != "Clear")
+    {
+        numBtn[i].addEventListener("click", function(){
+        display.innerText += Number(numBtn[i].innerText)
+    })
+    }
+    else if(numBtn[i].innerText == "Clear")
+    {
+        numBtn[i].addEventListener("click", function(){
+            display.innerText = "";
+            min.innerText = 43
+            max.innerText = 2019  
+        })
+    }
+    
+}
+
+// functionality of enter button
+enter.addEventListener("click", function(){
+   if(Number(min.innerText) > Number(display.innerText))
+   {
+    min.innerText = Number(display.innerText)
+    display.innerText = "";
+   }
+   else if(Number(max.innerText) < Number(display.innerText))
+   {
+    max.innerText = Number(display.innerText)
+    display.innerText = "";
+   }
+})
+
+
+
+
+
+</script>
